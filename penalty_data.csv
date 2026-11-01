@@ -1,0 +1,105 @@
+player, image_name, players_direction, height, result, penalty_type, foot_taken
+
+Gonzalo Montiel, 18_12_2022, left, bottom, goal, normal, right
+Lionel Messi, 18_12_2022, left, bottom, goal, rolled, left
+Leandro Paredes, 18_12_2022, left, bottom, goal, normal, right
+Paulo Dybala, 18_12_2022, middle, bottom, goal, normal, left
+Kylian Mbappe, 18_12_2022, left, bottom, goal, whipped, right
+Kingsley Coman, 18_12_2022, left, bottom, save, powered, right
+Aurelien Tchouameni, 18_12_2022, left, bottom, miss, driven, right
+Randal Kolo-Muani, 18_12_2022, middle, top, goal, powered, right
+
+Enzo Fernandez, 9_12_2022, left, bottom, miss, wide, right
+Gonzalo Montiel, 9_12_2022, right, middle, goal, rolled, right
+Lionel Messi, 9_12_2022, left, bottom, goal, rolled, left
+Leandro Paredes, 9_12_2022, left, bottom, goal, whipped, right
+Lautaro Martinez, 9_12_2022, left, middle, goal, stutter, right
+Virgil Van Dijk, 9_12_2022, left, bottom, save, normal, right
+Teun Koopmeiners, 9_12_2022, right, bottom, goal, whipped, left
+Wout Weghorst, 9_12_2022, left, bottom, goal, normal, right
+Luuk De Jong, 9_12_2022, left, bottom, goal, stutter normal, right
+
+Goncalo Ramos, 8_6_2025, middle, middle, goal, powered, right
+Mikel Merino, 8_6_2025, right, bottom, goal, normal, left
+Vitinha, 8_6_2025, left, bottom, goal, slow surprise, right
+Alex Baena, 8_6_2025, right, bottom, goal, rolled, right
+Bruno Fernandes, 8_6_2025, left, bottom, goal, slow, right
+Isco, 8_6_2025, left, bottom, goal, slow, right
+Nuno Mendes, 8_6_2025, right, top, goal, whipped, left
+Alvaro Morata, 8_6_2025, left, bottom, save, normal, right
+Ruben Neves, 8_6_2025, left, bottom, goal, driven, right
+
+Teun Koopmeiners, 30_6_2026, right, bottom, goal, whipped, left
+Neil El Aynaoui, 30_6_2026, left, top, crossbar, driven, right
+Justin Kluivert, 30_6_2026, left, bottom, post, normal, right
+Soufiane Rahimi, 30_6_2026, left, bottom, goal, normal, right
+Wout Weghorst, 30_6_2026, left, top, goal, normal, right
+Chemsdine Talbi, 30_6_2026, right, middle, goal, normal, right
+Quinten Timber, 30_6_2026, left, bottom, wide, normal, right
+Achraf Hakimi, 30_6_2026, left, bottom, post, normal, right
+Crysencio Summerville, 30_6_2026, left, top, save, normal, right
+Ismael Saibiri, 30_6_2026, left, bottom, goal, normal, right
+
+Kai Havertz, 29_6_2026, right, bottom, save, normal, left
+Mauricio, 29_6_2026, right, bottom, goal, slow, left
+Joshua Kimmich, 29_6_2026, left, bottom, goal, normal, right
+Jamal Musiala, 29_6_2026, left, bottom, goal, normal, right
+Matias Galarza, 29_6_2026, left, bottom, goal, rolled, left
+Nick Woltemade, 29_6_2026, right, bottom, save, slow, right
+Antonio Sanabria, 29_6_2026, left, bottom, miss, normal, right
+Nadiem Amiri, 29_6_2026, right, bottom, goal, normal, right
+Fabian Balbuena, 29_6_2026, right, bottom, save, normal, right
+Jonathan Tah, 29_6_2026, left, top, miss, normal, right
+Jose Canale, 29_6_2026, right, top, goal, normal, left
+
+Cole Palmer, 6_7_2024, left, bottom, goal, normal, left
+Manuel Akanji, 6_7_2024, right, bottom, save, slow, right
+Jude Bellingham, 6_7_2024, right, bottom, goal, stutter, right
+Fabian Schar, 6_7_2024, right, bottom, goal, rolled, right
+Bukayo Saka, 6_7_2024, right, bottom, goal, normal, left
+Xherdan Shaqiri, 6_7_2024, right, bottom, goal, normal, left
+Ivan Toney, 6_7_2024, left, bottom, goal, slow, right
+Zeki Amdouni, 6_7_2024, middle, bottom, goal, slow, right
+Trent Alexander-Arnold, 6_7_2024, left, middle, goal, normal, right
+
+Rodrygo Goes, 9_12_2022, right, bottom, save, normal, right
+Pedro Guilherme, 9_12_2022, left, bottom, goal, stutter, right
+Mislav Orsic, 9_12_2022, left, bottom, goal, normal, right
+Marquinhos, 9_12_2022, left, bottom, post, slow, right
+
+Takumi Minamino, 5_12_2022, right, bottom, save, normal, right
+Kaoru Mitoma, 5_12_2022, left, bottom, save, normal, right
+Marcelo Brozovic, 5_12_2022, middle, middle, goal, normal, right
+Takuma Asano, 5_12_2022, right, bottom, goal, normal, right
+Marko Livaja, 5_12_2022, left, bottom, post, slow, right
+Maya Yoshida, 5_12_2022, left, bottom, save, normal, right
+Mario Pasalic, 5_12_2022, left, bottom, goal, normal, right
+
+Abdelhamid Sabiri, 6_12_2022, right, bottom, goal, normal, right
+Pablo Sarabia, 6_12_2022, right, bottom, miss, normal, left
+Hakim Ziyech, 6_12_2022, middle, middle, goal, normal, left
+Carlos Soler, 6_12_2022, right, bottom, save, slow, right
+Badr Benoun, 6_12_2022, left, bottom, save, normal, right
+Achraf Hakimi, 6_12_2022, middle, bottom, goal, chipped, right
+
+Harry Souttar, 3_7_2026, right, top, miss, normal, right
+Mahmoud Saber, 3_7_2026, left, bottom, goal, whipped, right
+Awer Mabil, 3_7_2026, right, bottom, goal, slow, right
+Lucas Herrington, 3_7_2026, right, top, miss, normal, right
+Hossam Abdelmaguid, 3_7_2026, left, bottom, goal, slow, right
+
+Juan Quintero, 7_7_2026, middle, top, goal, stutter, left
+Granit Xhaka, 7_7_2026, left, middle, goal, normal, left
+Davidson Sanchez, 7_7_2026, middle, top, crossbar, slow, right
+Zeki Amdouni, 7_7_2026, right, bottom, goal, slow, right
+Jaminton Campaz, 7_7_2026, right, bottom, goal, normal, left
+Manuel Akanji, 7_7_2026, middle, top, crossbar, normal, right
+Cucho Hernandez, 7_7_2026, left, bottom, save, normal, right
+Cedric Itten, 7_7_2026, middle, middle, goal, normal, right
+Luis Diaz, 7_7_2026, left, bottom, goal, stutter, right
+Ruben Vargas, 7_7_2026, left, bottom, goal, slow, right
+
+
+
+
+
