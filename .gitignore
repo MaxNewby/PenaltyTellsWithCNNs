@@ -1,0 +1,40 @@
+# ==========================================
+# Operating System Files
+# ==========================================
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+desktop.ini
+
+# ==========================================
+# Common Build & Dependency Directories
+# ==========================================
+node_modules/
+bower_components/
+build/
+dist/
+out/
+bin/
+obj/
+
+# ==========================================
+# Logs and Databases
+# ==========================================
+*.log
+*.sql
+*.sqlite
+
+# ==========================================
+# Environments and Secrets (NEVER COMMIT THESE)
+# ==========================================
+.env
+.env.local
+.env.production
+*.pem
+*.key
