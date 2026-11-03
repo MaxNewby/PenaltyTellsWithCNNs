@@ -77,7 +77,7 @@ class MainProgram:
         #km.cross_validate(d, target='shot_right')  # 5. secondary: absolute left/right
 
         # Train model with all images on if the player shooting direction
-        #model, x, y = km.fit_final(d, target='foot_right')
+        model, x, y = km.fit_final(d, target='foot_right')
 
         i = int(np.where(y == 1)[0][0])  # first right-footed taker; use y == 0 for a left-footed one
         p = float(model(x[i:i + 1], training=False).numpy().ravel()[0])

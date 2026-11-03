@@ -55,7 +55,7 @@ Then, I use SHAP Heatmaps to show the parts of the image that alter the model's 
 
 Overfitting is clear to see as positive and negative sways are super close and don't follow clear body patterns, but this is only an example of the idea behind this project.
 
-![ShapHeatmapExample.png](./shap_analysis_plots/ShapHeatmapExample.png)
+![ShapHeatmapExample png](./shap_analysis_plots/ShapHeatmapExample.png)
 
 
 ### Current Issues:
