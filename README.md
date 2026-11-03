@@ -40,7 +40,7 @@ Anyway...
 - Data relating to the pose in the image was recorded for each player (for future use in combination with the model)
 ![Hakim Ziyech example computer vision on pose overlay](./image_data/Outfield_Players/Morocco/Hakim%20Ziyech/preprocessing/pose_overlay/6_12_2022.png)
 - Metadata relating to the penalty was recorded (ex: foot taken with, area of goal scored in)
-- The image was then cropped and centred to a consistent size (224x224) \
+- The image was then cropped and centred to a consistent size (224x224)
 
 ![Hakim Ziyech example resizing the image for consistency](./image_data/Outfield_Players/Morocco/Hakim%20Ziyech/preprocessing/resized/6_12_2022.png)
 
