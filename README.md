@@ -38,12 +38,14 @@ Anyway...
 - The background around each player was removed using Apple's Vision packages, leaving a cutout of the player. This removes all the clutter and the occasion surrounding the image.
 ![Hakim Ziyech example background removed using apple vision](./image_data/Outfield_Players/Morocco/Hakim%20Ziyech/preprocessing/foreground/6_12_2022.png)
 - Data relating to the pose in the image was recorded for each player (for future use in combination with the model)
-![Hakim Ziyech example background removed using apple vision](./image_data/Outfield_Players/Morocco/Hakim%20Ziyech/preprocessing/pose_overlay/6_12_2022.png)
+![Hakim Ziyech example computer vision on pose overlay](./image_data/Outfield_Players/Morocco/Hakim%20Ziyech/preprocessing/pose_overlay/6_12_2022.png)
 - Metadata relating to the penalty was recorded (ex: foot taken with, area of goal scored in)
-- The image was then cropped and centred to a consistent size (224x224)
-![Hakim Ziyech example background removed using apple vision](./image_data/Outfield_Players/Morocco/Hakim%20Ziyech/preprocessing/resized/6_12_2022.png)
+- The image was then cropped and centred to a consistent size (224x224) \
+
+![Hakim Ziyech example resizing the image for consistency](./image_data/Outfield_Players/Morocco/Hakim%20Ziyech/preprocessing/resized/6_12_2022.png)
+
 - The background surrounding the image is then coloured completely black, whilst the player becomes a white silhouette. This disguises the arms and direction of the head etc, however with a small amount of data per team, and different kits each year, the model may begin to learn the patterns of the kits, and the shades of green of the pitch that the cutouts hadn't removed. I decided this was a needed trade off to stop the model from not learning the body language.
-![Hakim Ziyech example background removed using apple vision](./image_data/Outfield_Players/Morocco/Hakim%20Ziyech/preprocessing/silhouette/6_12_2022.png)
+![Hakim Ziyech example silhouette to remove colour clutter](./image_data/Outfield_Players/Morocco/Hakim%20Ziyech/preprocessing/silhouette/6_12_2022.png)
 - The image was then ready.
 
 - Left footed players are also mirrored on the X axis to greaten size and consistency of the training set.
