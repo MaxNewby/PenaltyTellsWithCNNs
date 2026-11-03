@@ -2,12 +2,13 @@ from config import ROOT
 from pathlib import Path
 from PIL import Image
 from sklearn.metrics import roc_auc_score
-from sklearn.model_selection import StratifiedGroupKFold
+from sklearn.model_selection import StratifiedGroupKFold, train_test_split, GroupShuffleSplit
 import os
 import numpy as np
 import tensorflow as tf
 from tensorflow.keras import layers, models
 import shap
+import matplotlib.pyplot as plt
 
 
 
@@ -47,8 +48,9 @@ class ImageModel():
             layers.Dropout(0.5),
             layers.Dense(1, activation='sigmoid',
                          kernel_regularizer=tf.keras.regularizers.l2(0.01))])
-        head.compile(optimizer=tf.keras.optimizers.Adam(1e-3), loss='binary_crossentropy')
+        head.compile(optimizer=tf.keras.optimizers.Adam(1e-3), loss='binary_crossentropy', metrics=['accuracy'])
         return head
+
 
     def cross_validate(self, df, target='shot_right', epochs=100, n_repeats=5,
                        group_col='player', canonical=False):
@@ -92,6 +94,53 @@ class ImageModel():
                     print(f'  AUC within {name} takers ({m.sum()} rows): {roc_auc_score(y[m], p[m]):.2f}')
         return p
 
+
+    def fit_with_validation(self, df, target='shot_right',
+                            epochs=100, validation_size=0.2):
+
+        df = df.reset_index(drop=True)
+        x, x_flip = self.load(df)
+
+        e, e_flip = self.embed(x), self.embed(x_flip)
+        y = df[target].to_numpy().astype('float32')
+        groups = df['player'].to_numpy()
+
+        # Split by player, not individual images
+        splitter = GroupShuffleSplit(
+            n_splits=1,
+            test_size=validation_size,
+            random_state=0
+        )
+
+        train_idx, val_idx = next(
+            splitter.split(e, y, groups)
+        )
+
+        # Augment training data with mirrored images
+        X_train = np.vstack([e[train_idx], e_flip[train_idx]])
+        y_train = np.concatenate([y[train_idx], 1 - y[train_idx]])
+
+        # Validation uses original, unmirrored images
+        X_val = e[val_idx]
+        y_val = y[val_idx]
+
+        tf.keras.backend.clear_session()
+        tf.keras.utils.set_random_seed(0)
+
+        head = self.build_head(e.shape[1])
+
+        history = head.fit(
+            X_train,
+            y_train,
+            validation_data=(X_val, y_val),
+            epochs=epochs,
+            batch_size=16,
+            verbose=0
+        )
+
+        return head, history
+
+
     def fit_final(self, df, target='shot_right', epochs=100):
         """Fit on all rows; return a backbone+head model and inputs, for SHAP."""
         df = df.reset_index(drop=True)
@@ -121,5 +170,53 @@ class ImageModel():
                     print(f'  AUC within {name} takers ({m.sum()} rows): {roc_auc_score(y_test[m], p[m]):.2f}')
         return p
 
+    def train_vs_test(self, df, target='foot_right', epochs=100, group_col='player', seed=0):
+        df = df.reset_index(drop=True)
+        x, x_flip = self.load(df)
+        e, e_flip = self.embed(x), self.embed(x_flip)
+        y = df[target].to_numpy().astype('float32')
+        cv = StratifiedGroupKFold(n_splits=5, shuffle=True, random_state=seed)
+        train_aucs, p_test = [], np.zeros(len(df))
+        for tr, te in cv.split(e, y.astype(int), df[group_col]):
+            tf.keras.backend.clear_session()
+            tf.keras.utils.set_random_seed(seed)
+            head = self.build_head(e.shape[1])
+            head.fit(np.vstack([e[tr], e_flip[tr]]), np.concatenate([y[tr], 1 - y[tr]]),
+                     epochs=epochs, batch_size=16, verbose=0)
+            train_aucs.append(roc_auc_score(y[tr], head(e[tr], training=False).numpy().ravel()))
+            p_test[te] = head(e[te], training=False).numpy().ravel()
+        print(f'[{target}] train AUC {np.mean(train_aucs):.2f}  |  held-out AUC {roc_auc_score(y, p_test):.2f}')
 
+    def acc_vs_loss_graph(self, history):
 
+        history_dict = history.history
+
+        loss = history_dict['loss']
+        val_loss = history_dict['val_loss']
+        accuracy = history_dict['accuracy']
+        val_accuracy = history_dict['val_accuracy']
+
+        epochs = range(1, len(loss) + 1)
+
+        fig, axes = plt.subplots(1, 2, figsize=(12, 4))
+
+        # Loss
+        axes[0].plot(epochs, loss, 'bo-', label='Training Loss')
+        axes[0].plot(epochs, val_loss, 'ro-', label='Validation Loss')
+        axes[0].set_title('Training and Validation Loss')
+        axes[0].set_xlabel('Epochs')
+        axes[0].set_ylabel('Loss')
+        axes[0].legend()
+        axes[0].grid(True)
+
+        # Accuracy
+        axes[1].plot(epochs, accuracy, 'bo-', label='Training Accuracy')
+        axes[1].plot(epochs, val_accuracy, 'ro-', label='Validation Accuracy')
+        axes[1].set_title('Training and Validation Accuracy')
+        axes[1].set_xlabel('Epochs')
+        axes[1].set_ylabel('Accuracy')
+        axes[1].legend()
+        axes[1].grid(True)
+
+        plt.tight_layout()
+        plt.show()
